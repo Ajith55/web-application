@@ -7,6 +7,9 @@ import { HomeComponent } from './home/home.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { ContactComponent } from './contact/contact.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
 
 @NgModule({
@@ -15,11 +18,18 @@ import { ContactComponent } from './contact/contact.component';
     HomeComponent,
     AboutUsComponent,
     RoomsComponent,
-    ContactComponent
+    ContactComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
