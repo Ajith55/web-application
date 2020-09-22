@@ -1,1 +1,62 @@
 <p>contact works!</p>
+<iframe
+  width="100%"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJzbK8vXDWTIgRlaZGt0lBTsA&key=AIzaSyDa7oxOUGFhUoNy6rE1ci6cNj-3KcTkmwk
+    &q=Space+Needle,Seattle+WA" allowfullscreen>
+</iframe>
+
+
+<div>
+    <h3 class="text-center">Contact Us</h3>
+    <h1 class="text-center">Leave Message</h1>
+</div>
+
+<div>
+    <form [formGroup]="contactForm">
+        <label for="name">Your Name</label><br>
+        <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            formControlName = "name"
+           >
+        <br>
+        <div *ngIf="!contactForm.controls['name'].valid && 
+                            contactForm.controls['name'].errors.required  && formSubmitStatus">
+                                <p>Please Enter Your Name.</p>
+                </div>
+    
+        <label for="email">Email</label><br>
+        <input 
+        type="email" 
+        id="email" 
+        name="email"
+        formControlName = "email"
+        >
+        <div *ngIf="!contactForm.controls['email'].valid && 
+                            contactForm.controls['email'].errors.required  && formSubmitStatus">
+                                <p>Please Enter your Email.</p>
+                </div>
+        <br>
+    
+        <label for="message">Your Message</label><br>
+        <input 
+            type="text" 
+            id="message" 
+            name="message" 
+            formControlName = "message"
+           >
+           <div *ngIf="!contactForm.controls['message'].valid && 
+                            contactForm.controls['message'].errors.required  && formSubmitStatus">
+                                <p>Please enter your message.</p>
+                </div>
+        <br>
+    
+        
+        <br>
+    
+        <button type="submit" (click)="submitDetails()">Contact Us</button> 
+      </form> 
+</div>
