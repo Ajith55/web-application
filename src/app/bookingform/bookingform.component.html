@@ -1,0 +1,71 @@
+<form [formGroup]="roomForm">
+    <label for="checkin">Check In</label><br>
+    <input 
+        type="date" 
+        id="checkin" 
+        name="checkin" 
+        formControlName = "checkin"
+       >
+    <br>
+    <div *ngIf="!roomForm.controls['checkin'].valid && 
+                        roomForm.controls['checkin'].errors.required  && formSubmitStatus">
+                            <p>Please Enter CheckIn Date.</p>
+            </div>
+
+    <label for="checkout">Check Out</label><br>
+    <input 
+    type="date" 
+    id="checkout" 
+    name="checkout"
+    formControlName = "checkout"
+    >
+    <div *ngIf="!roomForm.controls['checkout'].valid && 
+                        roomForm.controls['checkout'].errors.required  && formSubmitStatus">
+                            <p>Please Enter CheckOut Date.</p>
+            </div>
+    <br>
+
+    <label for="room">Room</label><br>
+    <input 
+        type="number" 
+        id="room" 
+        name="room" 
+        formControlName = "room"
+       >
+       <div *ngIf="!roomForm.controls['room'].valid && 
+                        roomForm.controls['room'].errors.required  && formSubmitStatus">
+                            <p>Please select the number of rooms required.</p>
+            </div>
+    <br>
+
+    <label for="adult">Adult</label><br>
+    <input 
+        type="number" 
+        id="adult" 
+        name="adult" 
+        formControlName = "adult"
+       >
+       <div *ngIf="!roomForm.controls['adult'].valid && 
+                        roomForm.controls['adult'].errors.required  && formSubmitStatus">
+                            <p>Please select the number of Adults.</p>
+            </div>
+    <br>
+
+    <label for="children">Children</label><br>
+    <input 
+        type="number" 
+        id="children" 
+        name="children" 
+        formControlName = "children"
+       >
+       <div *ngIf="!roomForm.controls['children'].valid && 
+                        roomForm.controls['children'].errors.required  && formSubmitStatus">
+                            <p>Please select the number of Children.</p>
+            </div>
+    <br>
+    
+    
+    <br>
+
+    <button type="submit" (click)="submitDetails()">Book Now</button> 
+  </form> 

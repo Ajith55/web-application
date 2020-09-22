@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { ContactComponent } from './contact/contact.component';
+import { BookingformComponent } from './bookingform/bookingform.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { ContactComponent } from './contact/contact.component';
     HomeComponent,
     AboutUsComponent,
     RoomsComponent,
-    ContactComponent
+    ContactComponent,
+    BookingformComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
