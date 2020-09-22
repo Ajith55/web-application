@@ -1,0 +1,25 @@
+
+
+  .Leftside, .Rightside {
+      height: 60vh;
+      width: 100%;
+  }
+
+  @media Screen and (min-width: 786px)
+  {
+    .Leftside, .Rightside{
+        height: 100vh;
+    }
+  }
+
+  .Leftside{
+      
+  }
+
+  .Rightside{
+      
+  }
+
+  .rateColor{
+      color: chartreuse;
+  }
