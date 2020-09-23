@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SignupService } from './signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,7 @@ export class SignupComponent implements OnInit {
   signupForm : FormGroup;
   formSubmitStatus : boolean = false;
 
-  constructor(private formBuilder : FormBuilder) { 
+  constructor(private formBuilder : FormBuilder, private signupService : SignupService) { 
     this.createForm();
   }
 
@@ -19,7 +20,7 @@ export class SignupComponent implements OnInit {
 
   createForm(){
     this.signupForm = this.formBuilder.group({
-      username : [null, Validators.compose([Validators.required])],
+      userName : [null, Validators.compose([Validators.required])],
       password : [null, Validators.compose([Validators.required])],
       role : [null, Validators.compose([Validators.required])]
     });
@@ -27,6 +28,7 @@ export class SignupComponent implements OnInit {
   signupDetails(){
     this.formSubmitStatus = true;
     console.log(this.signupForm.value);
+    this.signupService.signUpBackendCall(this.signupForm.value)
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ServiceService } from './service.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
   loginForm : FormGroup;
   formSubmitStatus : boolean = false;
 
-  constructor(private formBuilder : FormBuilder) { 
+  constructor(private formBuilder : FormBuilder, private serviceService : ServiceService) { 
     this.createForm();
   }
 
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   createForm(){
     this.loginForm = this.formBuilder.group({
-      username : [null, Validators.compose([Validators.required])],
+      userName : [null, Validators.compose([Validators.required])],
       password : [null, Validators.compose([Validators.required])],
       role : [null, Validators.compose([Validators.required])]
     });
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
   loginDetails(){
     this.formSubmitStatus = true;
     console.log(this.loginForm.value);
+    this.serviceService.loginBackendCall(this.loginForm.value);
   }
 
 }
