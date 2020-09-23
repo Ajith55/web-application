@@ -1,1 +1,42 @@
 <p>login works!</p>
+
+
+<div>
+    <form [formGroup]="loginForm">
+        <label for="username">User Name</label><br>
+        <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            formControlName = "username"
+           >
+        <br>
+        <div *ngIf="!loginForm.controls['username'].valid && 
+                            loginForm.controls['username'].errors.required  && formSubmitStatus">
+                                <p>Please Enter Your Username.</p>
+                </div>
+    
+        <label for="password">Password</label><br>
+        <input 
+        type="password" 
+        id="password" 
+        name="password"
+        formControlName = "password"
+        >
+        <div *ngIf="!loginForm.controls['password'].valid && 
+                            loginForm.controls['password'].errors.required  && formSubmitStatus">
+                                <p>Please Enter your Password.</p>
+                </div>
+        <br><br>
+    
+    
+        <button type="submit" (click)="loginDetails()">Login</button> 
+      </form> 
+</div>
+
+<br><br>
+
+<div>
+    Don't have an account with us <a routerLink="/signup">Click Here</a> to Sign Up
+
+</div>
