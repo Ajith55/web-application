@@ -1,0 +1,55 @@
+<p>signup works!</p>
+
+
+<div>
+    <form [formGroup]="signupForm">
+        <label for="username">User Name</label><br>
+        <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            formControlName = "username"
+           >
+        <br>
+        <div *ngIf="!signupForm.controls['username'].valid && 
+                            signupForm.controls['username'].errors.required  && formSubmitStatus">
+                                <p>Please Enter Your Name.</p>
+                </div>
+    
+        <label for="password">Password</label><br>
+        <input 
+        type="password" 
+        id="password" 
+        name="password"
+        formControlName = "password"
+        >
+        <div *ngIf="!signupForm.controls['password'].valid && 
+                            signupForm.controls['password'].errors.required  && formSubmitStatus">
+                                <p>Please Enter your Password.</p>
+                </div>
+        <br>
+    
+        <label for="role">Role</label><br>
+        <input 
+            type="text" 
+            id="role" 
+            name="role" 
+            formControlName = "role"
+           >
+           <div *ngIf="!signupForm.controls['role'].valid && 
+                            signupForm.controls['role'].errors.required  && formSubmitStatus">
+                                <p>Please enter your Role.</p>
+                </div>
+        <br>
+    
+        
+        <br>
+    
+        <button type="submit" (click)="signupDetails()">Contact Us</button> 
+      </form> 
+</div>
+
+<div>
+    Already have an account <a routerLink="/login">Click Here</a> to Login
+
+</div>

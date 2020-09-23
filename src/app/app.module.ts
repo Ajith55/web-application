@@ -11,6 +11,8 @@ import { ContactComponent } from './contact/contact.component';
 import { BookingformComponent } from './bookingform/bookingform.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     AboutUsComponent,
     RoomsComponent,
     ContactComponent,
-    BookingformComponent
+    BookingformComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
