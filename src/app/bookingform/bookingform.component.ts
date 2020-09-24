@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-bookingform',
@@ -9,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class BookingformComponent implements OnInit {
   roomForm : FormGroup;
   formSubmitStatus : boolean = false;
+  model: NgbDateStruct;
 
   constructor(private formBuilder : FormBuilder) { 
     this.createForm();

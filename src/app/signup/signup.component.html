@@ -1,53 +1,35 @@
-<p>signup works!</p>
-
-
-<div>
-    <form [formGroup]="signupForm">
-        <label for="userName">User Name</label><br>
-        <input 
-            type="text" 
-            id="userName" 
-            name="userName" 
-            formControlName = "userName"
-           >
-        <br>
-        <div *ngIf="!signupForm.controls['userName'].valid && 
+<form [formGroup]="signupForm">
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="userName">User Name</label>
+            <input type="text" id="userName" name="userName" formControlName="userName" class="form-control"
+                placeholder="ajitha">
+            <small *ngIf="!signupForm.controls['userName'].valid && 
                             signupForm.controls['userName'].errors.required  && formSubmitStatus">
-                                <p>Please Enter Your Name.</p>
-                </div>
-    
-        <label for="password">Password</label><br>
-        <input 
-        type="password" 
-        id="password" 
-        name="password"
-        formControlName = "password"
-        >
-        <div *ngIf="!signupForm.controls['password'].valid && 
+                <p>Please Enter Your Name.</p>
+            </small>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" formControlName="password" class="form-control"
+                placeholder="Password">
+            <small *ngIf="!signupForm.controls['password'].valid && 
                             signupForm.controls['password'].errors.required  && formSubmitStatus">
-                                <p>Please Enter your Password.</p>
-                </div>
-        <br>
-    
-        <label for="role">Role</label><br>
-        <input 
-            type="text" 
-            id="role" 
-            name="role" 
-            formControlName = "role"
-           >
-           <div *ngIf="!signupForm.controls['role'].valid && 
+                <p>Please Enter your Password.</p>
+            </small>
+        </div>
+    </div>
+    <div class="form-group col-md-2">
+        <label for="role">Role</label>
+        <input type="text" id="role" name="role" formControlName="role" class="form-control" placeholder="Admin">
+        <small *ngIf="!signupForm.controls['role'].valid && 
                             signupForm.controls['role'].errors.required  && formSubmitStatus">
-                                <p>Please enter your Role.</p>
-                </div>
-        <br>
-    
-        
-        <br>
-    
-        <button type="submit" (click)="signupDetails()">Sign Up</button> 
-      </form> 
-</div>
+            <p>Please enter your Role.</p>
+            </small>
+    </div>
+
+    <button type="submit" class="btn btn-success" (click)="signupDetails()">Sign Up</button>
+</form>
 
 <br><br>
 

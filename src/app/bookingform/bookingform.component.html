@@ -1,71 +1,63 @@
+<br><br>
+<div class="container">
+
 <form [formGroup]="roomForm">
-    <label for="checkin">Check In</label><br>
-    <input 
-        type="text" 
-        id="checkin" 
-        name="checkin" 
-        formControlName = "checkin"
-       >
-    <br>
-    <div *ngIf="!roomForm.controls['checkin'].valid && 
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="checkin">Check In</label><br>
+            <input type="datetime-local" id="checkin" name="checkin" formControlName="checkin" placeholder="yyyy-mm-dd">
+            <small *ngIf="!roomForm.controls['checkin'].valid && 
                         roomForm.controls['checkin'].errors.required  && formSubmitStatus">
-                            <p>Please Enter CheckIn Date.</p>
-            </div>
-
-    <label for="checkout">Check Out</label><br>
-    <input 
-    type="text" 
-    id="checkout" 
-    name="checkout"
-    formControlName = "checkout"
-    >
-    <div *ngIf="!roomForm.controls['checkout'].valid && 
+                <p>Please Enter CheckIn Date.</p>
+            </small>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="checkout">Check Out</label><br>
+            <input type="datetime-local" id="checkout" name="checkout" formControlName="checkout" placeholder="yyyy-mm-dd">
+            <small *ngIf="!roomForm.controls['checkout'].valid && 
                         roomForm.controls['checkout'].errors.required  && formSubmitStatus">
-                            <p>Please Enter CheckOut Date.</p>
-            </div>
-    <br>
-
-    <label for="room">Room</label><br>
-    <input 
-        type="number" 
-        id="room" 
-        name="room" 
-        formControlName = "room"
-       >
-       <div *ngIf="!roomForm.controls['room'].valid && 
+                <p>Please Enter CheckOut Date.</p>
+            </small>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="room">Room</label><br>
+            <input type="number" id="room" name="room" formControlName="room" placeholder="1">
+            <small *ngIf="!roomForm.controls['room'].valid && 
                         roomForm.controls['room'].errors.required  && formSubmitStatus">
-                            <p>Please select the number of rooms required.</p>
-            </div>
-    <br>
-
-    <label for="adult">Adult</label><br>
-    <input 
-        type="number" 
-        id="adult" 
-        name="adult" 
-        formControlName = "adult"
-       >
-       <div *ngIf="!roomForm.controls['adult'].valid && 
+                <p>Please select the number of rooms required.</p>
+            </small>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="adult">Adult</label><br>
+            <input type="number" id="adult" name="adult" formControlName="adult" placeholder="1">
+            <small *ngIf="!roomForm.controls['adult'].valid && 
                         roomForm.controls['adult'].errors.required  && formSubmitStatus">
-                            <p>Please select the number of Adults.</p>
-            </div>
-    <br>
-
-    <label for="children">Children</label><br>
-    <input 
-        type="number" 
-        id="children" 
-        name="children" 
-        formControlName = "children"
-       >
-       <div *ngIf="!roomForm.controls['children'].valid && 
+                <p>Please select the number of Adults.</p>
+            </small>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="children">Children</label><br>
+            <input type="number" id="children" name="children" formControlName="children" placeholder="1">
+            <small *ngIf="!roomForm.controls['children'].valid && 
                         roomForm.controls['children'].errors.required  && formSubmitStatus">
-                            <p>Please select the number of Children.</p>
-            </div>
-    <br>
-    
-    
+                <p>Please select the number of Children.</p>
+            </small>
+        </div>
+    </div>
     <br>
 
-    <button type="submit" (click)="submitDetails()">Book Now</button> 
-  </form> 
+    <button type="submit" class="btn btn-success" (click)="submitDetails()">Book Now</button>
+
+</form>
+
+</div>
+
+
+  
+
+
+
+
+

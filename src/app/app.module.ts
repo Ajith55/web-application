@@ -14,6 +14,11 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import {NgbDateStruct, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { appReducer } from './store';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,9 +37,15 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    StoreModule.forRoot(appReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  model: NgbDateStruct;
+}
