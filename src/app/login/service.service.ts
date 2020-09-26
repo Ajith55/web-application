@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { SAVE_ROLE, SAVE_USERNAME } from '../actions';
+import { HttpBackendClient } from '../http-backend.service';
 import { ResponseModel } from '../response.model';
 import { AppState } from '../store';
 
@@ -10,12 +11,12 @@ import { AppState } from '../store';
 })
 export class ServiceService {
 
-  constructor(private http: HttpClient, private store : Store<AppState>) { }
+  constructor(private http: HttpClient, private store : Store<AppState>, private httpBackendClient : HttpBackendClient) { }
 
   loginBackendCall(user: any) {
 
     let url = "http://localhost:3000/api/login"
-    return this.http.post<ResponseModel>(url, user).subscribe((result) => {
+    return this.httpBackendClient.post<ResponseModel>(url, user).subscribe((result) => {
       console.log(result);
       // console.log(result.data.user);
       sessionStorage.setItem('token', result.data.token)

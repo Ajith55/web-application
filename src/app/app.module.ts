@@ -13,12 +13,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {NgbDateStruct, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { appReducer } from './store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { AuthHeaderInterceptor } from './http-interceptor/auth-header-interceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,13 @@ import { environment } from 'src/environments/environment';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
 
   ],
-  providers: [],
+  providers: [
+    {
+        provide: HTTP_INTERCEPTORS, 
+        useClass: AuthHeaderInterceptor, 
+        multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
