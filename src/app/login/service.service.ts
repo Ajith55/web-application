@@ -19,11 +19,14 @@ export class ServiceService {
     return this.httpBackendClient.post<ResponseModel>(url, user).subscribe((result) => {
       console.log(result);
       // console.log(result.data.user);
-      sessionStorage.setItem('token', result.data.token)
+      sessionStorage.setItem('token', result.data.token);
+      
       this.store.dispatch({type:SAVE_USERNAME, payload:result.data.formattedUser.userName}),
       this.store.dispatch({type:SAVE_ROLE, payload:result.data.formattedUser.role})
     },
-      err => console.log(err)
+      err => {
+        console.log(err)
+      }
     )
   }
 

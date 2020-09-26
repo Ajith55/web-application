@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store';
 import { ServiceService } from './service.service';
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder : FormBuilder, 
               private serviceService : ServiceService, 
-              private store : Store<AppState>) { 
+              private store : Store<AppState>,
+              private router : Router) { 
     this.createForm();
 
   }
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
     this.formSubmitStatus = true;
     console.log(this.loginForm.value);
     this.serviceService.loginBackendCall(this.loginForm.value);
+    this.router.navigate(['/home']);
   }
 
   getToken(){

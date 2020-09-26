@@ -8,9 +8,13 @@ export class NavbarService {
 
   constructor(private http : HttpClient) { }
 
-  logOutBackendCall(token){
+  logOutBackendCall(){
     return this.http.get('http://localhost:3000/api/logout');
   }
+
+  // loggedIn(){
+  //   return !!localStorage.getItem('token')
+  // }
 
 
 

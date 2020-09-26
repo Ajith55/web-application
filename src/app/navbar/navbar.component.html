@@ -1,20 +1,35 @@
-
-<nav class="navbar navbar-expand-lg navbar-light mb-6" style="background-color:lightslategray;">
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" routerLink="/home"><img src="assets/img/core-img/logo.png"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup" >
-    <div class="navbar-nav">
-      <a class="nav-item nav-link " routerLink="/home">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" routerLink="/rooms">Rooms</a>
-      <a class="nav-item nav-link" routerLink="/about-us">About-Us</a>
-      <a class="nav-item nav-link" routerLink="/contact">Contact</a>
-      <a class="nav-item nav-link" routerLink="/signup">Signup</a>
-      <a class="nav-item nav-link" routerLink="/login">Login</a>
-      <button> <a class="nav-item nav-link" (click)="logOut()" >Logout</a></button>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/rooms">Rooms</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about-us">About-Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact">Contact</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+
+      <a class="text" style="cursor: pointer;" *ngIf="loggedIn()">Welcome {{name}}</a>
+
+    </ul>
+    <ul class="navbar-nav">
+
+      <a class="nav-link" *ngIf="!loggedIn()" routerLink="/signup">Signup</a>
+      <a class="nav-link" *ngIf="!loggedIn()" routerLink="/login">Login</a>
+      <a class="nav-link" style="cursor: pointer;" *ngIf="loggedIn()" (click)="logOut()">Logout</a>
+
+    </ul>
   </div>
 </nav>
-

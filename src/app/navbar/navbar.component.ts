@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store';
 import { NavbarService } from './navbar.service';
 
 @Component({
@@ -9,16 +11,35 @@ import { NavbarService } from './navbar.service';
 })
 export class NavbarComponent implements OnInit {
   token = sessionStorage.getItem('token');
+  name : any;
 
-  constructor( private router : Router, private navbarService : NavbarService) { }
+  constructor( private router : Router, private navbarService : NavbarService, private store : Store<AppState>) { 
+    
+  }
 
   ngOnInit(): void {
+    this.store.select(state=>state.homeState.userName).subscribe((userN)=>{
+      // console.log(userN);
+      this.name = userN;
+});
+  }
+
+  loggedIn(){
+    
+    if(sessionStorage.getItem('token')) {
+      return true;
+    } else {
+      return false;
+    }
+   
   }
 
   logOut(){
-    // sessionStorage.removeItem('token');
-    this.navbarService.logOutBackendCall(this.token).subscribe(()=>{
+    // console.log('call went');
+    this.navbarService.logOutBackendCall().subscribe(()=>{
+      sessionStorage.clear();
       this.router.navigate(['/home']);
+
     });
     // this.router.navigate(['/home']);
   }
