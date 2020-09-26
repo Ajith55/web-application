@@ -18,6 +18,29 @@ export class BookingformComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.roomForm.valueChanges.subscribe((data)=>{
+    //   console.log(data);
+    //     if((data.firstName) || (data.lastName) ){
+    //           console.log('Values Present');
+    //           this.roomForm.get('firstName').setValidators(Validators.compose(
+    //               [Validators.required, Validators.maxLength(10), Validators.minLength(3)]));
+    //           this.roomForm.get('lastName').setValidators(Validators.compose([Validators.required]));
+
+    //           this.roomForm.get('firstName').updateValueAndValidity({ emitEvent: false } );
+    //           this.roomForm.get('lastName').updateValueAndValidity({ emitEvent: false } );
+
+
+    //     } else{
+    //           console.log('no Values Present');
+
+    //           this.roomForm.get('firstName').setValidators(Validators.compose([]));
+    //         this.roomForm.get('lastName').setValidators(Validators.compose([]));
+
+    //         this.roomForm.get('firstName').updateValueAndValidity({ emitEvent: false } );
+    //         this.roomForm.get('lastName').updateValueAndValidity({ emitEvent: false } );
+    //     }
+    // })
+
   }
 
   createForm(){

@@ -17,6 +17,33 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.signupForm.valueChanges.subscribe((data)=>{
+      // console.log(data);
+        if((data.userName) || (data.password) || (data.role)){
+              // console.log('Values Present');
+              this.signupForm.get('userName').setValidators(Validators.compose(
+                  [Validators.required, Validators.maxLength(10), Validators.minLength(3)]));
+              this.signupForm.get('password').setValidators(Validators.compose([Validators.required, 
+                Validators.minLength(3)]));
+              this.signupForm.get('role').setValidators(Validators.compose([Validators.required, 
+                Validators.minLength(4)]));
+
+              this.signupForm.get('userName').updateValueAndValidity({ emitEvent: false } );
+              this.signupForm.get('password').updateValueAndValidity({ emitEvent: false } );
+              this.signupForm.get('role').updateValueAndValidity({ emitEvent: false } );
+
+        } else{
+              // console.log('no Values Present');
+
+            this.signupForm.get('userName').setValidators(Validators.compose([]));
+            this.signupForm.get('password').setValidators(Validators.compose([]));
+            this.signupForm.get('role').setValidators(Validators.compose([]));
+
+            this.signupForm.get('userName').updateValueAndValidity({ emitEvent: false } );
+            this.signupForm.get('password').updateValueAndValidity({ emitEvent: false } );
+            this.signupForm.get('role').updateValueAndValidity({ emitEvent: false } );
+        }
+    })
   }
 
   createForm(){
@@ -27,10 +54,18 @@ export class SignupComponent implements OnInit {
     });
 }
   signupDetails(){
+
     this.formSubmitStatus = true;
-    console.log(this.signupForm.value);
-    this.signupService.signUpBackendCall(this.signupForm.value)
-    this.router.navigate(['/home']);
+
+    if(this.signupForm.valid){
+      console.log('form is valid');
+      //make a service call
+      this.signupService.signUpBackendCall(this.signupForm.value)
+      this.router.navigate(['/home']);
+      this.formSubmitStatus = false;
+  } else{
+      console.log('form is invalid');
+  }
   }
 
 }
